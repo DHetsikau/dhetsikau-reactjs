@@ -4,3 +4,12 @@
     width: 250px;
     height: 200px;
 }
+
+.ch-align {
+    display: inline-block;
+}
+
+.box {
+    position: relative;
+    float: right;
+}
