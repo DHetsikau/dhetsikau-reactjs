@@ -13,3 +13,46 @@
     position: relative;
     float: right;
 }
+
+.save {
+    margin-right: 4px;
+    color: #5cb85c;
+}
+
+.edit {
+    margin-right: 5px;
+    color: #d99f2e;
+}
+
+.del {
+    margin-right: -2px;
+    color: #dc3545;
+}
+
+.ic {
+    float: left;
+    margin-top: 3px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.iw-150 {
+    width: 150px;
+}
+
+.iw-200 {
+    width: 200px;
+}
+.ih-20 {
+    height: 20px;
+}
+
+.ih-30 {
+    height: 30px;
+}
+
+.ta {
+    height: 60px;
+    width: 200px;
+    resize: none;
+}
