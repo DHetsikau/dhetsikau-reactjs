@@ -2,5 +2,5 @@
   text-align: left;
   margin: 7px;
   border-color: #657699;
-  height: 95vh;
+  min-height: fit-content;
 }
