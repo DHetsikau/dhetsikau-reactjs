@@ -56,18 +56,20 @@ const Card = (props) => {
     };
 
     const renderEditModeButtons = () => {
-      return (!props.disabled) ? (
-        <span>
+      return ( 
+        !props.disabled && (
+          <span>
           <FaCheck className="save ic" onClick={saveCardBtnHandler.bind(this)}/>
           <FaTimes className="del ic" onClick={declineCardBtnHandler.bind(this)}/>
-        </span>
-      ) : '';
+          </span>
+        )
+      );
     };
 
     const renderViewModeButtons = () => {
       return (
         <span>
-          {!props.disabled ? <FaPencilAlt className="edit ic" onClick={editCardBtnHandler.bind(this)}/> : ''}
+          {!props.disabled && (<FaPencilAlt className="edit ic" onClick={editCardBtnHandler.bind(this)}/>)}
           <input type="checkbox" onChange={switchCardStyleHandler} checked={cardState.isStylized} />
         </span>
       );

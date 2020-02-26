@@ -30,10 +30,14 @@
     }
   }
 
-  .cb-m-20 {
-    margin: 20px;
+  .cb-m-15 {
+    margin: 15px;
   }
 
   .g-align {
     display: inline-block;
+}
+
+.c-p {
+  cursor: pointer;
 }

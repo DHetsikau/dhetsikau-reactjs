@@ -2,6 +2,18 @@ import React, {useState} from 'react';
 import logo from './logo.svg';
 import './Layout.css';
 import Card from '../Card/Card';
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+  background-color: #282c34;
+  box-shadow: 0 2px 3px #ccc;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 10px;
+  width: 13%;
+  color: ${props=> !props.alt ? "white" : "#61dafb" };
+  border: 1px solid ${props=> !props.alt ? "#eee" : "#e83e8c"};
+`;
 
 function Layout() {
   const [layoutState, setLayoutState] = useState({
@@ -79,17 +91,16 @@ function Layout() {
          <img src={logo} className="App-logo" alt="logo" />
          <p> This is <code>ReactJS</code> App.</p>
       </header>
-      <div className="form-check cb-m-20">
-          <input
-            className="form-check-input"
+      <StyledDiv alt={layoutState.viewMode}>
+          <input className="cb-m-15 c-p"
             type="checkbox"
             id="viewMode"
             onChange={switchViewModeHandler}
             checked={layoutState.viewMode}/>
-          <label className="form-check-label" htmlFor="viewMode">
+          <label className="form-check-label c-p" htmlFor="viewMode">
              View only
           </label>
-      </div>
+      </StyledDiv>
       <div>
         {
           layoutState.cards.map((card, index) => {
