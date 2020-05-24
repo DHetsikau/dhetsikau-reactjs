@@ -9,6 +9,15 @@
     }
   }
 
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
 .App-header {
     background-color: #282c34;
     height: 10vh;
@@ -20,24 +29,3 @@
     color: white;
     margin: 7px;
   }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  .cb-m-15 {
-    margin: 15px;
-  }
-
-  .g-align {
-    display: inline-block;
-}
-
-.c-p {
-  cursor: pointer;
-}
