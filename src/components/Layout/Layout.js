@@ -1,67 +1,65 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './Layout.css';
-import Card from '../Card/Card';
-import styled from 'styled-components';
 
-const StyledDiv = styled.div`
-  background-color: #282c34;
-  box-shadow: 0 2px 3px #ccc;
-  border-radius: 5px;
-  margin: 20px;
-  padding: 10px;
-  width: 13%;
-  color: ${props=> !props.alt ? "white" : "#61dafb" };
-  border: 1px solid ${props=> !props.alt ? "#eee" : "#e83e8c"};
-`;
+import ReactHeader from './ReactHeader/ReactHeader';
+import Cockpit  from './Cockpit/Cockpit';
+import CardList from './CardList/CardList';
 
 function Layout() {
   const [layoutState, setLayoutState] = useState({
     viewMode: false,
+    selectMode: false,
     cards: [
       {data: {
         id: 'qqq',
         header: "The Card 1",
         title: "Listen up! 1",
-        body: "Your AD could be placed here. 1",
-      },},
+        body: "Your AD could be placed here. 1", 
+        },
+      isSelected: false,},
       {data: {
         id: "www",
         header: "The Card 2",
         title: "Listen up! 2",
         body: "Your AD could be placed here. 2",
-      },},
+        },
+      isSelected: false,},
       {data: {
         id: "eee",
         header: "The Card 3",
         title: "Listen up! 3",
         body: "Your AD could be placed here. 3",
-      },},
+        },
+      isSelected: false,},
       {data: {
         id: "rrr",
         header: "The Card 4",
         title: "Listen up! 4",
         body: "Your AD could be placed here. 4",
-      },},
+        },
+      isSelected: false,},
       {data: {
         id: "ttt",
         header: "The Card 5",
         title: "Listen up! 5",
         body: "Your AD could be placed here. 5",
-      },},
+        },
+      isSelected: false,},
       {data: {
         id: "yyy",
         header: "The Card 6",
         title: "Listen up! 6",
         body: "Your AD could be placed here. 6",
-      },},
+        },
+      isSelected: false,},
       {data: {
         id: "uuu",
         header: "The Card 7",
         title: "Listen up! 7",
         body: "Your AD could be placed here. 7",
-      },},
-    ]
+        },
+      isSelected: false,},
+    ],
 });
 
   const saveChangesHandler = (id, vals) => {
@@ -85,38 +83,55 @@ function Layout() {
     });
   }
 
+  const switchSelectModeHandler = () => {
+    setLayoutState({
+      ...layoutState,
+      selectMode: !layoutState.selectMode,
+    });
+  }
+ 
+  const selectCardHandler = (id, value) =>  {
+    
+    const cards = [...layoutState.cards];
+    const cardIndex = cards.findIndex(c => {
+      return c.data.id === id
+    });
+    const card = cards[cardIndex];
+    card.isSelected = value;
+    cards[cardIndex] = card;
+    setLayoutState({
+      ...layoutState,
+      cards: cards,
+    })
+  }
+
+  const deleteCardsHandler = () => {
+    const cards = [...layoutState.cards].filter(c => {
+      return !c.isSelected
+    });
+    setLayoutState({
+      ...layoutState,
+      cards: cards,
+    })
+  }
+
   return (
     <div>
-      <header className="App-header jumbotron card-header">
-         <img src={logo} className="App-logo" alt="logo" />
-         <p> This is <code>ReactJS</code> App.</p>
-      </header>
-      <StyledDiv alt={layoutState.viewMode}>
-          <input className="cb-m-15 c-p"
-            type="checkbox"
-            id="viewMode"
-            onChange={switchViewModeHandler}
-            checked={layoutState.viewMode}/>
-          <label className="form-check-label c-p" htmlFor="viewMode">
-             View only
-          </label>
-      </StyledDiv>
-      <div>
-        {
-          layoutState.cards.map((card, index) => {
-            return (
-              <span className="g-align">
-                <Card
-                  key={card.data.id}
-                  index={index}
-                  data={card.data}
-                  onsave={saveChangesHandler}
-                  disabled={layoutState.viewMode} />
-              </span>
-            )
-          })
-        }
-      </div>  
+      <ReactHeader />
+      <Cockpit
+        viewMode={layoutState.viewMode}
+        switchViewMode={switchViewModeHandler}
+        selectMode={layoutState.selectMode}
+        switchSelectMode={switchSelectModeHandler}
+        onDeleteCards = {deleteCardsHandler}
+      />
+      <CardList 
+        cards={layoutState.cards}
+        onSaveCard={saveChangesHandler}
+        viewMode={layoutState.viewMode}
+        selectMode={layoutState.selectMode}
+        onCheckCard={selectCardHandler}
+      />
     </div>
   )
 }

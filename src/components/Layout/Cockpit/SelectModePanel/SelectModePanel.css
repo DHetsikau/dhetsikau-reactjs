@@ -1,0 +1,41 @@
+.cb-m-15 {
+  margin: 15px;
+}
+
+.cb-ml-15 {
+  margin-left: 15px; 
+}
+.c-p {
+  cursor: pointer;
+}
+
+.del-btn {
+  border-color: white;
+  background-color: #282c34;
+}
+
+.del-m-p {
+  background-color: #282c34;
+  box-shadow: 0 2px 3px #ccc;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 10px;
+  width: 13%;
+  display: inline-block;
+  color: white;
+  border: 1px solid #eee;
+}
+
+.ch-align {
+  display: inline-block;
+}
+
+.del_ic {
+  margin-right: 5px;
+  margin-left: 5px;
+  color: #5cb85c;
+  float: left;
+  margin-top: 1px;
+  padding: 0px;
+  cursor: pointer;
+}
