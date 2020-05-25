@@ -12,7 +12,7 @@ const selectModePanel = (props) => {
         <button
           type="button"
           className="btn btn-danger c-p del-btn"
-          onClick={props.deleteCards}>
+          onClick={props.onDeleteCards}>
             <FaTrashAlt className="del_ic"/>
         </button>
       </div>
@@ -44,5 +44,3 @@ const selectModePanel = (props) => {
 }
 
 export default selectModePanel;
-
-

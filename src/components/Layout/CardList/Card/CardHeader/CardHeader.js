@@ -21,13 +21,13 @@ const cardHeader = (props) => {
     return (
       <span>
         {!props.disabled && !props.selectMode && (<FaPencilAlt className="edit ic" onClick={props.edit}/>)}
-        {props.selectMode && (<input type="checkbox" onChange={props.switch} checked={props.isStylized} />)}
+        {props.selectMode && (<input type="checkbox" onChange={props.switch} checked={props.isSelected} />)}
       </span>
     );
   };
 
   return (
-    <div className={"card-header text-white " + (props.isStylized ? "bg-info" : "bg-dark")}>
+    <div className={"card-header text-white " + (props.isSelected ? "bg-info" : "bg-dark")}>
       <div className= "ch-align">
         {(props.isEditable && !props.disabled) ?
           <input

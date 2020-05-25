@@ -14,46 +14,52 @@ function Layout() {
         id: 'qqq',
         header: "The Card 1",
         title: "Listen up! 1",
-        body: "Your AD could be placed here. 1",
-      },},
+        body: "Your AD could be placed here. 1", 
+        },
+      isSelected: false,},
       {data: {
         id: "www",
         header: "The Card 2",
         title: "Listen up! 2",
         body: "Your AD could be placed here. 2",
-      },},
+        },
+      isSelected: false,},
       {data: {
         id: "eee",
         header: "The Card 3",
         title: "Listen up! 3",
         body: "Your AD could be placed here. 3",
-      },},
+        },
+      isSelected: false,},
       {data: {
         id: "rrr",
         header: "The Card 4",
         title: "Listen up! 4",
         body: "Your AD could be placed here. 4",
-      },},
+        },
+      isSelected: false,},
       {data: {
         id: "ttt",
         header: "The Card 5",
         title: "Listen up! 5",
         body: "Your AD could be placed here. 5",
-      },},
+        },
+      isSelected: false,},
       {data: {
         id: "yyy",
         header: "The Card 6",
         title: "Listen up! 6",
         body: "Your AD could be placed here. 6",
-      },},
+        },
+      isSelected: false,},
       {data: {
         id: "uuu",
         header: "The Card 7",
         title: "Listen up! 7",
         body: "Your AD could be placed here. 7",
-      },},
+        },
+      isSelected: false,},
     ],
-    selectedCards: [],
 });
 
   const saveChangesHandler = (id, vals) => {
@@ -84,38 +90,28 @@ function Layout() {
     });
   }
  
-  const selectCardHandler = (id) =>  {
-    const selectedCards = [...layoutState.selectedCards];
-    selectedCards.push(id);
+  const selectCardHandler = (id, value) =>  {
+    
+    const cards = [...layoutState.cards];
+    const cardIndex = cards.findIndex(c => {
+      return c.data.id === id
+    });
+    const card = cards[cardIndex];
+    card.isSelected = value;
+    cards[cardIndex] = card;
     setLayoutState({
       ...layoutState,
-      selectedCards: selectedCards,
-    });
-  }
-
-  const unselectCardHandler = (id) => {
-    const selectedCards = [...layoutState.selectedCards];
-    const cardIndex = selectedCards.indexOf(id);
-    (cardIndex > -1) && selectedCards.splice(cardIndex, 1);
-    setLayoutState({
-      ...layoutState,
-      selectedCards: selectedCards,
-    });
+      cards: cards,
+    })
   }
 
   const deleteCardsHandler = () => {
-    const cards = [...layoutState.cards];
-    const selectedCards = [...layoutState.selectedCards];
-    selectedCards.forEach(id => {
-      const cardIndex = cards.findIndex(c => {
-        return c.data.id === id
-      });
-      (cardIndex > -1) && cards.splice(cardIndex, 1);
+    const cards = [...layoutState.cards].filter(c => {
+      return !c.isSelected
     });
     setLayoutState({
       ...layoutState,
       cards: cards,
-      selectedCards: [],
     })
   }
 
@@ -127,16 +123,14 @@ function Layout() {
         switchViewMode={switchViewModeHandler}
         selectMode={layoutState.selectMode}
         switchSelectMode={switchSelectModeHandler}
-        deleteCards = {deleteCardsHandler}
+        onDeleteCards = {deleteCardsHandler}
       />
       <CardList 
         cards={layoutState.cards}
-        selectedCards={layoutState.selectedCards}
-        saved={saveChangesHandler}
+        onSaveCard={saveChangesHandler}
         viewMode={layoutState.viewMode}
         selectMode={layoutState.selectMode}
-        selectCard={selectCardHandler}
-        unselectCard={unselectCardHandler}
+        onCheckCard={selectCardHandler}
       />
     </div>
   )

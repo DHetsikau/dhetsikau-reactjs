@@ -9,12 +9,11 @@ const cards = (props) => props.cards.map((card, index) => {
         key={card.data.id}
         index={index}
         data={card.data}
-        onsave={props.saved}
+        onSave={props.onSaveCard}
         disabled={props.viewMode}
-        isSelected={props.selectedCards.includes(card.data.id)}
+        isSelected={card.isSelected}
         selectMode={props.selectMode}
-        selectCard={props.selectCard}
-        unselectCard={props.unselectCard}/>
+        onCheck={props.onCheckCard}/>
     </span>
   )
 });

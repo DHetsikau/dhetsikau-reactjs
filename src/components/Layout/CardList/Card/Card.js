@@ -14,8 +14,7 @@ const Card = (props) => {
   const viewOnly = useRef(false);
 
   const switchCardStyleHandler = (event) => {
-    event.target.checked ?
-      props.selectCard(props.data.id) : props.unselectCard(props.data.id);
+    props.onCheck(props.data.id, event.target.checked)
   };
 
   const editCardBtnHandler = () => {
@@ -32,7 +31,7 @@ const Card = (props) => {
       ...cardState,
       isEditable: false,
     });
-    props.onsave(props.data.id, {...cardState.temp})
+    props.onSave(props.data.id, {...cardState.temp})
   };
   
   const declineCardBtnHandler = () => {
@@ -75,7 +74,7 @@ const Card = (props) => {
     <div className={"item container card bg-light mb-4 " + (props.isSelected ? "border-info" : "border-secondary")}>
       <CardHeader
         disabled={props.disabled}
-        isStylized={props.isSelected}
+        isSelected={props.isSelected}
         isEditable={cardState.isEditable}
         headerChanged={cardChangeHandler.bind(this, 'header')}
         headerTempValue={cardState.temp.header}

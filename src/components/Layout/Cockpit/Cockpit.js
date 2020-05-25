@@ -16,7 +16,7 @@ const cockpit = (props) => {
         viewMode={props.viewMode}
         selectMode={props.selectMode}
         switchSelectMode={props.switchSelectMode}
-        deleteCards={props.deleteCards}
+        onDeleteCards={props.onDeleteCards}
       />
     </div>
   )};
