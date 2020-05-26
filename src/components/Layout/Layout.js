@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {v4 as uuidv4} from 'uuid';
 import './Layout.css';
 
 import ReactHeader from './ReactHeader/ReactHeader';
@@ -102,7 +103,7 @@ function Layout() {
     setLayoutState({
       ...layoutState,
       cards: cards,
-    })
+    });
   }
 
   const deleteCardsHandler = () => {
@@ -112,7 +113,21 @@ function Layout() {
     setLayoutState({
       ...layoutState,
       cards: cards,
-    })
+    });
+  }
+
+  const addCardHandler = () => {
+    const cards = [...layoutState.cards];
+    cards.push({
+      data:{
+        id: uuidv4(),
+      },
+      isSelected: false,
+    });
+    setLayoutState({
+      ...layoutState,
+      cards: cards,
+    });
   }
 
   return (
@@ -124,6 +139,7 @@ function Layout() {
         selectMode={layoutState.selectMode}
         switchSelectMode={switchSelectModeHandler}
         onDeleteCards = {deleteCardsHandler}
+        onAddCards = {addCardHandler}
       />
       <CardList 
         cards={layoutState.cards}
