@@ -6,7 +6,7 @@ const styledDiv = styled.div`
   border-radius: 5px;
   margin: 20px;
   padding: 10px;
-  width: 13%;
+  width: 20%;
   display: inline-block;
   color: ${props=> props.disabled ? props.disabledTextColor : ( props.alternate ? props.alternateTextColor : "white")};
   border: 1px solid ${props=> props.disabled ? props.disabledBorderColor : ( props.alternate ? props.alternateBorderColor : "#eee")};

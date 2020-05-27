@@ -14,6 +14,11 @@
   background-color: #282c34;
 }
 
+.add-btn {
+  border-color: white;
+  background-color: #282c34;
+}
+
 .del-m-p {
   background-color: #282c34;
   box-shadow: 0 2px 3px #ccc;
@@ -31,6 +36,16 @@
 }
 
 .del_ic {
+  margin-right: 5px;
+  margin-left: 5px;
+  color: #FF4500;
+  float: left;
+  margin-top: 1px;
+  padding: 0px;
+  cursor: pointer;
+}
+
+.add_ic {
   margin-right: 5px;
   margin-left: 5px;
   color: #5cb85c;
