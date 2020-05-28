@@ -1,0 +1,9 @@
+.hocSpinner {
+  margin: 10px;
+  margin-left: 110px;
+  width: 250px;
+  height: 200px;  
+  display: inline-block;
+  align-items: center; 
+  justify-content: center;
+}

@@ -3,6 +3,7 @@ import './Card.css';
 
 import CardHeader from './CardHeader/CardHeader';
 import CardBody from './CardBody/CardBody';
+import withLoadingDelay from './../../../../hoc/withLoadingDelay/withLoadingDelay';
 
 const Card = (props) => {
 
@@ -97,4 +98,4 @@ const Card = (props) => {
   );
 }
 
-export default Card;
+export default withLoadingDelay(Card);
