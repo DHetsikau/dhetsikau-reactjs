@@ -117,16 +117,9 @@ function Layout() {
   }
 
   const addCardHandler = () => {
-    const cards = [...layoutState.cards];
-    cards.push({
-      data:{
-        id: uuidv4(),
-      },
-      isSelected: false,
-    });
     setLayoutState({
       ...layoutState,
-      cards: cards,
+      cards: [...layoutState.cards, {data: { id: uuidv4(),}, isSelected: false,}],
     });
   }
 
