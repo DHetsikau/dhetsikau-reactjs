@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import './Card.css';
+import PropTypes from 'prop-types';
 
 import CardHeader from './CardHeader/CardHeader';
 import CardBody from './CardBody/CardBody';
@@ -21,7 +22,6 @@ const Card = (props) => {
   const editCardBtnHandler = () => {
     setCardState({
       ...cardState,
-      isStylized: false,
       isEditable: true,
       temp: {...props.data},
     });
@@ -97,5 +97,11 @@ const Card = (props) => {
     </div>
   );
 }
+
+Card.propTypes = {
+  data: PropTypes.objectOf(PropTypes.string).isRequired,
+  disabled: PropTypes.bool,
+  isSelected: PropTypes.bool,
+};
 
 export default withLoadingDelay(Card);

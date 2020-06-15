@@ -29,3 +29,8 @@
   color: white;
   margin: 7px;
 }
+
+.badge-custom {
+  text-align:right; 
+  margin:0px 0px 0px auto;
+}
