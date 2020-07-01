@@ -1,5 +1,5 @@
 import React from 'react';
-import './CardBody.css';
+import './index.css';
 
 import { maskLabel } from '../../../../../common/utils/commonUtils';
 
@@ -12,7 +12,7 @@ const cardBody = (props) =>
           className="iw-200 ih-30"
           onChange={props.titleChanged}
           defaultValue={props.titleTempValue} /> :
-        maskLabel(props.titleLabel, 12)}
+        maskLabel(props.titleLabel, 20)}
     </h5>
     <p className="card-text">
       {(props.isEditable && !props.disabled) ?

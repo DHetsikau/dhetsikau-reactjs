@@ -1,7 +1,7 @@
 import React from 'react';
-import StyledDiv from '../../../../common/components/StyledDiv/StyledDiv';
+import StyledDiv from '../../../../common/components/StyledDiv';
 
-import './ViewOnlyPanel.css'
+import './index.css'
 
 const viewOnlyPanel = (props) =>
   <StyledDiv

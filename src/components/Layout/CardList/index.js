@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from './Card/Card';
-import './CardList.css';
+import Card from './Card';
+import './index.css';
 
 import AppContext from '../../../context/app-context';
 

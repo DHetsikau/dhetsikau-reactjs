@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 
-import './withLoadingDelay.css';
+import './index.css';
 
 const withLoadingDelay = (WrappedComponent) => {
   return (props) => {

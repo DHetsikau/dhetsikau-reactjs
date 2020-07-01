@@ -1,11 +1,11 @@
 import React from 'react';
 
-import ViewOnlyPanel from './ViewOnlyPanel/ViewOnlyPanel';
-import SelectModePanel from './SelectModePanel/SelectModePanel';
+import ViewOnlyPanel from './ViewOnlyPanel';
+import SelectModePanel from './SelectModePanel';
 
 import AppContext from '../../../context/app-context';
 
-import './Cockpit.css';
+import './index.css';
 
 const Cockpit = (props) => {
   const context = React.useContext(AppContext);
