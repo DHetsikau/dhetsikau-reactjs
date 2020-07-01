@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/Layout';
 import { AppContextProvider } from '../context/app-context';
 
 function App() {

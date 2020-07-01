@@ -1,5 +1,5 @@
 import React from 'react';
-import './CardHeader.css';
+import './index.css';
 
 import { maskLabel } from '../../../../../common/utils/commonUtils';
 import { FaCheck, FaPencilAlt, FaTimes } from 'react-icons/fa';

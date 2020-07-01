@@ -1,7 +1,7 @@
 import React from 'react';
-import StyledDiv from '../../../../common/components/StyledDiv/StyledDiv';
+import StyledDiv from '../../../../common/components/StyledDiv';
 
-import './SelectModePanel.css';
+import './index.css';
 import { FaTrashAlt, FaPlus } from 'react-icons/fa';
 
 const selectModePanel = (props) => {

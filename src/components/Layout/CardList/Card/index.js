@@ -1,10 +1,10 @@
 import React, {useState, useRef, useEffect} from 'react';
-import './Card.css';
+import './index.css';
 import PropTypes from 'prop-types';
 
-import CardHeader from './CardHeader/CardHeader';
-import CardBody from './CardBody/CardBody';
-import withLoadingDelay from './../../../../hoc/withLoadingDelay/withLoadingDelay';
+import CardHeader from './CardHeader';
+import CardBody from './CardBody';
+import withLoadingDelay from '../../../../hoc/withLoadingDelay';
 
 const Card = (props) => {
 

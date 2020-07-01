@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {v4 as uuidv4} from 'uuid';
-import CARDS from '../common/constants/Cards';
+import axios from 'axios';
 
 const AppContext = React.createContext({
   cardsState: [],
@@ -13,8 +13,28 @@ const AppContext = React.createContext({
 });
 
 export const AppContextProvider = (props) => {
-  const [cardsState, setCardsState] = React.useState(CARDS);
-  
+  const [cardsState, setCardsState] = React.useState([]);
+
+  useEffect(() => {
+    axios.get('https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json')
+      .then((r) => {
+        setCardsState(r.data.slice(0, 15).map((i) => {
+          return {
+            data: {
+              id: i.Number,
+              header: i.Name,
+              title: i.Types.join(', '),
+              body: i.About,
+            },
+            isSelected: false,
+          };
+        }),);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
   const updateHandler = (id, vals) => {
     const cardIndex = cardsState.findIndex(c => {
         return c.data.id === id

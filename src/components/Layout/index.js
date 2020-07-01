@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import './Layout.css';
+import './index.css';
 
-import ReactHeader from './ReactHeader/ReactHeader';
-import Cockpit  from './Cockpit/Cockpit';
-import CardList from './CardList/CardList';
+import ReactHeader from './ReactHeader';
+import Cockpit  from './Cockpit';
+import CardList from './CardList';
 
 function Layout() {
 
