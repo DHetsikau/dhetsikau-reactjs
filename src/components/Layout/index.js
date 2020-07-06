@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
+import {Switch, Route} from 'react-router-dom';
+
 import './index.css';
 
 import ReactHeader from './ReactHeader';
 import Cockpit  from './Cockpit';
 import CardList from './CardList';
+import NotFound from './NotFound';
+import SignIn from './SignIn';
 
 function Layout() {
 
@@ -26,9 +30,8 @@ function Layout() {
     });
   }
 
-  return (
-    <div>
-      <ReactHeader />
+  const main = (
+    <React.Fragment>
       <Cockpit
         viewMode={layoutState.viewMode}
         selectMode={layoutState.selectMode}
@@ -39,6 +42,17 @@ function Layout() {
         viewMode={layoutState.viewMode}
         selectMode={layoutState.selectMode}
       />
+    </React.Fragment>
+  )
+
+  return (
+    <div>
+      <ReactHeader />
+      <Switch>
+        <Route path="/" exact render={() => main}/>
+        <Route path="/signin" exact component={SignIn}/>
+        <Route component={NotFound}/>
+      </Switch>
     </div>
   )
 }

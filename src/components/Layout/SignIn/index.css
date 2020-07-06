@@ -1,0 +1,26 @@
+.sitem {
+  margin: 50px;
+  padding: 3px;
+  width: 250px;
+  height: 300px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.ta-l {
+  text-align: left;
+}
+
+.ta-r {
+  text-align: right;
+}
+
+.w-60 {
+    width: 100px;
+}
+
+label {
+    padding: 20 0;
+}

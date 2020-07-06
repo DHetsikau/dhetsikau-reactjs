@@ -3,13 +3,16 @@ import './App.css';
 
 import Layout from '../components/Layout';
 import { AppContextProvider } from '../context/app-context';
+import {BrowserRouter} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App card border-secondary mb-3">
-      <AppContextProvider>
-        <Layout />
-      </AppContextProvider>
+      <BrowserRouter>
+        <AppContextProvider>
+          <Layout />
+        </AppContextProvider>
+      </BrowserRouter>
     </div>
   );
 }

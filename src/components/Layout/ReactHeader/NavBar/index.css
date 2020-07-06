@@ -1,0 +1,30 @@
+.NavBar {
+  text-align:right; 
+  margin:20px 20px 10px auto;
+  box-sizing: border-box; 
+  width: 70%;
+};
+
+.NavBar ul {
+  margin: 40px;
+  padding: 40px;
+};
+
+.NavBar li {
+  margin: 20px;
+  padding: 30px;
+}
+
+.NavBar a {
+    color: #FFFFFF;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.NavBar a:hover,
+.NavBar a:active,
+.NavBar a.active {
+    color: #40A4C8; 
+}
