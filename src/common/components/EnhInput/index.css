@@ -1,0 +1,19 @@
+.iconedLabel {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 40%;
+}
+
+.iconPos {
+    margin: 5px;
+}
+
+.iconInvalid {
+  color: #dc3545;
+}
+
+.iconValid {
+  color: #5cb85c;
+}
