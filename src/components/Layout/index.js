@@ -8,6 +8,7 @@ import Cockpit  from './Cockpit';
 import CardList from './CardList';
 import NotFound from './NotFound';
 import SignIn from './SignIn';
+import SingleCard from './SingleCard';
 
 function Layout() {
 
@@ -51,6 +52,7 @@ function Layout() {
       <Switch>
         <Route path="/" exact render={() => main}/>
         <Route path="/signin" exact component={SignIn}/>
+        <Route path="/card/:id" exact component={SingleCard}/>
         <Route component={NotFound}/>
       </Switch>
     </div>

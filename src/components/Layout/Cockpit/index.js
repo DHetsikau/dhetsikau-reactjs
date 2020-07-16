@@ -3,12 +3,12 @@ import React from 'react';
 import ViewOnlyPanel from './ViewOnlyPanel';
 import SelectModePanel from './SelectModePanel';
 
-import AppContext from '../../../context/app-context';
+import {connect} from 'react-redux';
+import * as cardActions from '../../../store/actions/cardActions';
 
 import './index.css';
 
 const Cockpit = (props) => {
-  const context = React.useContext(AppContext);
   return (
     <div>
       <ViewOnlyPanel
@@ -19,10 +19,15 @@ const Cockpit = (props) => {
         viewMode={props.viewMode}
         selectMode={props.selectMode}
         switchSelectMode={props.switchSelectMode}
-        onDeleteCards={context.deleteHandler}
-        onAddCards={context.addHandler}
+        onDeleteCards={props.removeCard}
+        onAddCards={props.createCard}
       />
     </div>
   )};
 
-export default Cockpit;
+const mapDispatchToProps = {
+  removeCard: cardActions.removeCard,
+  createCard: cardActions.createCard
+}
+
+export default connect(null, mapDispatchToProps)(Cockpit);

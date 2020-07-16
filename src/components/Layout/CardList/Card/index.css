@@ -1,4 +1,11 @@
-.item {
+.single-item {
+    margin: 50px auto;
+    padding: 3px;
+    width: 600px;
+    height: 400px;
+}
+
+.group-item {
     margin: 50px;
     padding: 3px;
     width: 250px;
