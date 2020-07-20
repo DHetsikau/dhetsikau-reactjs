@@ -26,16 +26,18 @@ const cardHeader = (props) => {
     );
   };
 
+  const maskLabelChars = props.displayedAs === 'group' ? 12 : 30;
+
   return (
     <div className={"card-header text-white " + (props.isSelected ? "bg-info" : "bg-dark")}>
       <div className= "ch-align">
         {(props.isEditable && !props.disabled) ?
           <input
             type="text"
-            className="iw-150 ih-20"
+            className={"ih-20 " + (props.displayedAs === 'group' ? " iw-150 " : " iw-500 ")}
             onChange={props.headerChanged}
             defaultValue={props.headerTempValue} /> :
-          maskLabel(props.headerLabel, 12)}
+          maskLabel(props.headerLabel, maskLabelChars )}
       </div>
       <div className="box">
       {props.isEditable ? renderEditModeButtons() : renderViewModeButtons()}

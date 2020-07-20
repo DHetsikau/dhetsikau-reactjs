@@ -3,25 +3,27 @@ import './index.css';
 
 import { maskLabel } from '../../../../../common/utils/commonUtils';
 
-const cardBody = (props) =>
-  <div className="card-body">
+const cardBody = (props) => {
+  const [maskLabelTitle, maskLabelBody] = props.displayedAs === 'group' ? [20, 40] : [50, 200]; 
+  return (<div className="card-body">
     <h5 className="card-title">
       {(props.isEditable && !props.disabled)?
         <input
           type="text"
-          className="iw-200 ih-30"
+          className={"ih-30 " + (props.displayedAs === 'group' ? " hw-200 " : " hw-550 ")}
           onChange={props.titleChanged}
           defaultValue={props.titleTempValue} /> :
-        maskLabel(props.titleLabel, 20)}
+        maskLabel(props.titleLabel, maskLabelTitle)}
     </h5>
     <p className="card-text">
       {(props.isEditable && !props.disabled) ?
         <textarea
-          className="ta"
+          className={props.displayedAs === 'group' ? "g-ta" : "s-ta" }
           onChange={props.textChanged}
           defaultValue={props.textTempValue} /> :
-        maskLabel(props.textLabel, 40)}
+        maskLabel(props.textLabel, maskLabelBody)}
     </p>
   </div>
+  )}
 
 export default cardBody;

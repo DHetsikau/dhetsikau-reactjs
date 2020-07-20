@@ -2,28 +2,39 @@ import React from 'react';
 import Card from './Card';
 import './index.css';
 
-import AppContext from '../../../context/app-context';
+import {connect} from 'react-redux';
+import * as cardActions from '../../../store/actions/cardActions';
 
-const Cards = (props) => {
-  const context = React.useContext(AppContext);
-  return context.cards.map((card, index) => {
+const CardList = props => {
+  return !props.loading && props.cards.length > 0 && props.cards.map((card, index) => {
   return (
     <span key={card.data.id} className="g-align">
       <Card
         key={card.data.id}
+        id={card.data.id}
         index={index}
         data={card.data}
         disabled={props.viewMode}
         isSelected={card.isSelected}
         selectMode={props.selectMode}
-        onSave={context.updateHandler}
-        onCheck={context.selectHandler}/>
+        onSave={props.updateCard}
+        onCheck={props.selectCard}
+        displayedAs="group"/>
     </span>
   )
 })
 };
 
+const mapStateToProps = state => {
+  return {
+    cards: state.cardsReducer.cards,
+    loading: state.cardsReducer.loading,
+  }
+}
 
+const mapDispatchToProps = {
+  updateCard: cardActions.updateCard,
+  selectCard: cardActions.selectCard,
+};
 
-
-export default Cards;
+export default connect(mapStateToProps, mapDispatchToProps)(CardList);

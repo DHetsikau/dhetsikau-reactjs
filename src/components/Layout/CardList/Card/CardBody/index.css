@@ -1,12 +1,22 @@
-.iw-200 {
+.hw-200 {
     width: 200px;
+}
+
+.hw-550 {
+    width: 550px;
 }
 
 .ih-30 {
     height: 30px;
 }
 
-.ta {
+.s-ta {
+    height: 250px;
+    width: 550px;
+    resize: none;
+}
+
+.g-ta {
     height: 60px;
     width: 200px;
     resize: none;
