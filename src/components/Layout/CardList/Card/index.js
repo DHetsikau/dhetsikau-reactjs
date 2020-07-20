@@ -6,16 +6,19 @@ import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import withLoadingDelay from '../../../../hoc/withLoadingDelay';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as cardActions from '../../../../store/actions/cardActions';
+import classNames from 'classnames';
 
-const Card = (props) => {
+const Card = props => {
 
   const [cardState, setCardState] = useState({
     isEditable: false,
     temp: {},
   });
-
+  
+  const dispatch = useDispatch();
   const viewOnly = useRef(false);
-
   const hist = useHistory();
 
   const dblClickCardHandler = () => {
@@ -23,7 +26,7 @@ const Card = (props) => {
 };
 
   const switchCardStyleHandler = (event) => {
-    props.onCheck(props.data.id, event.target.checked)
+    dispatch(cardActions.selectCard(props.data.id, event.target.checked));
   };
 
   const editCardBtnHandler = () => {
@@ -39,7 +42,7 @@ const Card = (props) => {
       ...cardState,
       isEditable: false,
     });
-    props.onSave(props.data.id, {...cardState.temp})
+    dispatch(cardActions.updateCard(props.data.id, {...cardState.temp}));
   };
   
   const declineCardBtnHandler = () => {
@@ -77,13 +80,18 @@ const Card = (props) => {
       viewOnly.current =  false;
     }
   }, [props.disabled]); // eslint-disable-line
+  
+  const cardClass = classNames("container" , "card", "bg-light", "mb-4", {
+    "border-info" : props.isSelected,
+    "border-secondary" : !props.isSelected,
+    "group-item" : props.displayedAs === 'group',
+    "single-item" : props.displayedAs === 'single',
+  });
 
   return (
     <div 
       onDoubleClick={ (!cardState.isEditable && props.displayedAs === 'group') ? dblClickCardHandler : null}
-      className={"container card bg-light mb-4 " 
-        + (props.isSelected ? " border-info " : " border-secondary ")
-        + (props.displayedAs === 'group' ? " group-item " : " single-item ")}>
+      className={cardClass}>
       <CardHeader
         disabled={props.disabled}
         isSelected={props.isSelected}

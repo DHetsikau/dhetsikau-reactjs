@@ -2,11 +2,13 @@ import React from 'react';
 import Card from './Card';
 import './index.css';
 
-import {connect} from 'react-redux';
-import * as cardActions from '../../../store/actions/cardActions';
+import { useSelector } from 'react-redux';
 
 const CardList = props => {
-  return !props.loading && props.cards.length > 0 && props.cards.map((card, index) => {
+  const cardsInStore = useSelector(state => state.cardsReducer.cards);
+  const loadingInStore = useSelector(state => state.cardsReducer.loading);
+
+  return !loadingInStore && cardsInStore.length > 0 && cardsInStore.map((card, index) => {
   return (
     <span key={card.data.id} className="g-align">
       <Card
@@ -17,24 +19,10 @@ const CardList = props => {
         disabled={props.viewMode}
         isSelected={card.isSelected}
         selectMode={props.selectMode}
-        onSave={props.updateCard}
-        onCheck={props.selectCard}
         displayedAs="group"/>
     </span>
   )
 })
 };
 
-const mapStateToProps = state => {
-  return {
-    cards: state.cardsReducer.cards,
-    loading: state.cardsReducer.loading,
-  }
-}
-
-const mapDispatchToProps = {
-  updateCard: cardActions.updateCard,
-  selectCard: cardActions.selectCard,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardList);
+export default CardList;
