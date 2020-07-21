@@ -3,6 +3,7 @@ import './index.css';
 
 import { maskLabel } from '../../../../../common/utils/commonUtils';
 import { FaCheck, FaPencilAlt, FaTimes } from 'react-icons/fa';
+import classNames from 'classnames';
 
 const cardHeader = (props) => {
 
@@ -27,14 +28,24 @@ const cardHeader = (props) => {
   };
 
   const maskLabelChars = props.displayedAs === 'group' ? 12 : 30;
+  
+  const cardHeaderClass = classNames("card-header", "text-white", {
+    "bg-info" : props.isSelected,
+    "bg-dark" : !props.isSelected,
+  }); 
+
+  const cardHeaderInputClass = classNames("ih-20", {
+    "iw-150" : props.displayedAs === 'group',
+    "iw-500" : props.displayedAs === 'single',
+  })
 
   return (
-    <div className={"card-header text-white " + (props.isSelected ? "bg-info" : "bg-dark")}>
+    <div className={cardHeaderClass}>
       <div className= "ch-align">
         {(props.isEditable && !props.disabled) ?
           <input
             type="text"
-            className={"ih-20 " + (props.displayedAs === 'group' ? " iw-150 " : " iw-500 ")}
+            className={cardHeaderInputClass}
             onChange={props.headerChanged}
             defaultValue={props.headerTempValue} /> :
           maskLabel(props.headerLabel, maskLabelChars )}

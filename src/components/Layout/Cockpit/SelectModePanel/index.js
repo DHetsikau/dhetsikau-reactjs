@@ -3,8 +3,12 @@ import StyledDiv from '../../../../common/components/StyledDiv';
 
 import './index.css';
 import { FaTrashAlt, FaPlus } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { removeCard, createCard } from '../../../../store/actions/cardActions';
 
-const selectModePanel = (props) => {
+const SelectModePanel = props => {
+
+  const dispatch = useDispatch();
 
   const renderSelectButtons = () =>
     <div className="ch-align">
@@ -12,13 +16,13 @@ const selectModePanel = (props) => {
         <button
           type="button"
           className="btn btn-success c-p add-btn"
-          onClick={props.onAddCards}>
+          onClick={() => {dispatch(createCard())}}>
             <FaPlus className="add_ic"/>
         </button>
         <button
           type="button"
           className="btn btn-danger c-p del-btn"
-          onClick={props.onDeleteCards}>
+          onClick={() => {dispatch(removeCard())}}>
             <FaTrashAlt className="del_ic"/>
         </button>
       </div>
@@ -48,4 +52,4 @@ const selectModePanel = (props) => {
   )
 }
 
-export default selectModePanel;
+export default SelectModePanel;

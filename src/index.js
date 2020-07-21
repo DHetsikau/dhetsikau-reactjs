@@ -8,6 +8,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import cardsReducer from './store/reducers/cardReducer';
+import logger from './store/middlewareLogger';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
 
@@ -16,7 +17,7 @@ const rootReducer = combineReducers({
 });
 
 const store = createStore(rootReducer, composeEnhancers(
-    applyMiddleware(thunk)
+    applyMiddleware(thunk, logger)
 ));
 
 const app = (
