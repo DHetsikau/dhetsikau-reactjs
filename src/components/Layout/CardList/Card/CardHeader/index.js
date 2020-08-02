@@ -5,7 +5,7 @@ import { maskLabel } from '../../../../../common/utils/commonUtils';
 import { FaCheck, FaPencilAlt, FaTimes } from 'react-icons/fa';
 import classNames from 'classnames';
 
-const cardHeader = (props) => {
+const cardHeader = props => {
 
   const renderEditModeButtons = () => {
     return (
@@ -37,7 +37,7 @@ const cardHeader = (props) => {
   const cardHeaderInputClass = classNames("ih-20", {
     "iw-150" : props.displayedAs === 'group',
     "iw-500" : props.displayedAs === 'single',
-  })
+  });
 
   return (
     <div className={cardHeaderClass}>

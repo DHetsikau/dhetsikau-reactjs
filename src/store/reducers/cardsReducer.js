@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
   cards: [],
@@ -39,7 +39,7 @@ const createCard = state => {
     state,
     {cards: [...state.cards, {data: { id: uuidv4(),}, isSelected: false,}]}
   )
-}
+};
 
 const fetchCardsStart = state => {
   return updateObject(state, {loading : true})

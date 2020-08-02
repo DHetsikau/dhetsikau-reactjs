@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 import PropTypes from 'prop-types';
 
@@ -11,14 +11,14 @@ import * as cardActions from '../../../../store/actions/cardActions';
 import classNames from 'classnames';
 
 const Card = props => {
-
+  
   const [cardState, setCardState] = useState({
     isEditable: false,
     temp: {},
   });
   
   const dispatch = useDispatch();
-  const viewOnly = useRef(false);
+  
   const hist = useHistory();
 
   const dblClickCardHandler = () => {
@@ -66,19 +66,13 @@ const Card = props => {
   const setViewOnly = () => {
     setCardState({
       ...cardState,
-      isEditable: false,
+      isEditable: props.viewMode,
       temp: {},
     });
-    viewOnly.current = false;
   };
 
-  viewOnly.current = props.disabled;
-
   useEffect(() => {
-    if (viewOnly.current) {
       setViewOnly();
-      viewOnly.current =  false;
-    }
   }, [props.disabled]); // eslint-disable-line
   
   const cardClass = classNames("container" , "card", "bg-light", "mb-4", {
