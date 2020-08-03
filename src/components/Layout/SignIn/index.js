@@ -4,6 +4,10 @@ import './index.css';
 import EnhInput from '../../../common/components/EnhInput';
 import * as validationRules from '../../../common/utils/validationRules';
 
+import { useDispatch, useSelector } from 'react-redux';
+import * as authActions from '../../../store/actions/authActions';
+import { Redirect } from 'react-router-dom';
+
 const SignIn = () => {
   const [signInForm, setSignInForm] = useState({
     userName: {
@@ -49,6 +53,11 @@ const SignIn = () => {
 
   const formElementsArray = [];
 
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.authReducer.currentUser);
+  const isSigned = user ? true : false; 
+  const authRedirectPath = useSelector(state => state.authReducer.authRedirectPath);
+
   for (let key in signInForm) {
     formElementsArray.push({
       id: key,
@@ -63,6 +72,7 @@ const SignIn = () => {
       formData[formElementIdentifier] = signInForm[formElementIdentifier].value;
     }
     console.log(formData);
+    dispatch(authActions.auth(formData));
   };
 
   const inputChangeHandler = (event, inputIdentifier) => {
@@ -87,6 +97,7 @@ const SignIn = () => {
 
   return (
     <React.Fragment>
+      {isSigned ? <Redirect to={authRedirectPath}/> : null}
       <div className={"form-item container card bg-light mb-4 border-info"}>
         <div className={"card-header text-white bg-dark"}>
           <h5>Please sign in</h5>

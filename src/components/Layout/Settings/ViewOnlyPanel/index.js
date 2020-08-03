@@ -3,7 +3,7 @@ import StyledDiv from '../../../../common/components/StyledDiv';
 
 import './index.css'
 
-const viewOnlyPanel = (props) =>
+const viewOnlyPanel = props =>
   <StyledDiv
     alternate={props.viewMode}
     alternateTextColor="#61dafb"
