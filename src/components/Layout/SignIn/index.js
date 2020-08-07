@@ -55,7 +55,7 @@ const SignIn = () => {
 
   const dispatch = useDispatch();
   const user = useSelector(state => state.authReducer.currentUser);
-  const isSigned = user ? true : false; 
+  const isSigned = !!user; 
   const authRedirectPath = useSelector(state => state.authReducer.authRedirectPath);
 
   for (let key in signInForm) {

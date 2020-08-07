@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './index.css';
 import PropTypes from 'prop-types';
 
@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import * as cardActions from '../../../../store/actions/cardActions';
 import classNames from 'classnames';
 
-const Card = props => {
+export const Card = props => {
   
   const [cardState, setCardState] = useState({
     isEditable: false,
@@ -63,18 +63,6 @@ const Card = props => {
     });
   };
 
-  const setViewOnly = () => {
-    setCardState({
-      ...cardState,
-      isEditable: props.viewMode,
-      temp: {},
-    });
-  };
-
-  useEffect(() => {
-      setViewOnly();
-  }, [props.disabled]); // eslint-disable-line
-  
   const cardClass = classNames("container" , "card", "bg-light", "mb-4", {
     "border-info" : props.isSelected,
     "border-secondary" : !props.isSelected,
